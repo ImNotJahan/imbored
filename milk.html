@@ -23,29 +23,65 @@
     canvas.height = dimension[1];
     
     canvas.addEventListener("mousedown", e => {
-      x = e.offsetX;
-      y = e.offsetY;
-      isDrawing = true;
+        x = e.offsetX;
+        y = e.offsetY;
+        isDrawing = true;
+    });
+    
+    canvas.addEventListener("touchstart", e => {
+        var touch = e.touches[0] || e.changedTouches[0];
+        x = touch.pageX;
+        y = touch.pageY;
+        isDrawing = true;
     });
     
     canvas.addEventListener("mousemove", e => {
-      if (isDrawing === true) {
-        drawMilk(context, x, y);
-        x = e.offsetX;
-        y = e.offsetY;
-      }
+        if (isDrawing === true) {
+            drawMilk(context, x, y);
+            x = e.offsetX;
+            y = e.offsetY;
+        }
+    });
+    
+    canvas.addEventListener("touchmove", e => {
+        if (isDrawing === true) {
+            drawMilk(context, x, y);
+            var touch = e.touches[0] || e.changedTouches[0];
+            x = touch.pageX;
+            y = touch.pageY;
+        }
     });
     
     window.addEventListener("mouseup", e => {
-      if (isDrawing === true) {
-        drawMilk(context, x, y);
-        x = 0;
-        y = 0;
-        isDrawing = false;
-      }
+        if (isDrawing === true) {
+            drawMilk(context, x, y);
+            x = 0;
+            y = 0;
+            isDrawing = false;
+        }
+    });
+    
+    window.addEventListener("touchend", e => {
+        if (isDrawing === true) {
+            drawMilk(context, x, y);
+            x = 0;
+            y = 0;
+            isDrawing = false;
+        }
     });
     
     function drawMilk(context, x1, y1) {
-      context.drawImage(milk, x1 - 75, y1 - 50, 150, 100);
+        context.drawImage(milk, x1 - 75, y1 - 50, 150, 100);
     }
 </script>
+
+<style>
+    body
+    {
+        overflow: hidden;
+        position: fixed;
+        
+        margin: 0;
+        padding: 0;
+    }
+</style>
