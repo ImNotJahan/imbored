@@ -10,6 +10,7 @@ for($k = 0; $k < $windows; $k++)
     <head>
        <link rel="stylesheet" href="/styles.css">
        <title>Windows <?php echo $windows; ?></title> 
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     
     <body>
