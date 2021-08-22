@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>water bottle</title>
+    </head>
+    
+    <body style="overflow: hidden;">
+        <img id="water" src="https://www.wikihow.com/images/thumb/7/70/Open-a-Bottle-of-Water-Step-1-Version-4.jpg/aid375884-v4-728px-Open-a-Bottle-of-Water-Step-1-Version-4.jpg">
+    </body>
+</html>
+
+<script>
+    const water = document.getElementById("water");
+
+    var dimension = [document.documentElement.clientWidth, document.documentElement.clientHeight];
+    water.width = dimension[0];
+    water.height = dimension[1];
+    
+    var waterIndex = 0;
+    
+    document.addEventListener("click", event => {
+        var image = "";
+        waterIndex = (waterIndex + 1) % 6;
+        
+        switch(waterIndex)
+        {
+            case 0:
+                image = "https://www.wikihow.com/images/thumb/7/70/Open-a-Bottle-of-Water-Step-1-Version-4.jpg/aid375884-v4-728px-Open-a-Bottle-of-Water-Step-1-Version-4.jpg";
+                break;
+                
+            case 1:
+                image = "https://www.wikihow.com/images/thumb/a/a8/Open-a-Bottle-of-Water-Step-2-Version-4.jpg/550px-nowatermark-Open-a-Bottle-of-Water-Step-2-Version-4.jpg";
+                break;
+                
+            case 2:
+                image = "https://www.wikihow.com/images/thumb/7/70/Open-a-Bottle-of-Water-Step-3-Version-4.jpg/550px-nowatermark-Open-a-Bottle-of-Water-Step-3-Version-4.jpg";
+                break;
+                
+            case 3:
+                image = "https://www.wikihow.com/images/thumb/a/a9/Open-a-Bottle-of-Water-Step-4-Version-4.jpg/550px-nowatermark-Open-a-Bottle-of-Water-Step-4-Version-4.jpg";
+                break;
+                
+            case 4:
+                image = "https://www.wikihow.com/images/thumb/5/56/Open-a-Bottle-of-Water-Step-5-Version-4.jpg/550px-nowatermark-Open-a-Bottle-of-Water-Step-5-Version-4.jpg";
+                break;
+                
+            case 5:
+                image = "https://www.wikihow.com/images/thumb/a/a6/Open-a-Bottle-of-Water-Step-6-Version-4.jpg/aid375884-v4-728px-Open-a-Bottle-of-Water-Step-6-Version-4.jpg";
+                break;
+        }
+        
+        water.src = image;
+    });
+</script>
+
+<style>
+    body
+    {
+        overflow: hidden;
+        position: fixed;
+        
+        margin: 0;
+        padding: 0;
+    }
+</style>
