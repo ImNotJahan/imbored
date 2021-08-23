@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>clickclick</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+    
+    <body>
+        <input type="submit" value="Click.">
+    </body>
+</html>
+
+<script>
+    const button = document.querySelector("input");
+    
+    button.addEventListener("click", event => {
+      button.value = event.detail;
+    });
+</script>
