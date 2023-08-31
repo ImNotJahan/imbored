@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://jahanrashidi.com/static.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <title>TV Static</title>
+    </head>
+    
+    <body style="margin: 0px; overflow: hidden;">
+        <canvas id="tv" style="width: 100%; height: 100%;" width="1000px;" height="1000px;"></canvas>
+        
+        <script>
+            const tv = document.getElementById("tv");
+            const ctx = tv.getContext('2d');
+            
+            const tvW = tv.width;
+            const tvH = tv.height;
+            ctx.clearRect(0, 0, tvW, tvH);
+            
+            const tvData = ctx.getImageData(0, 0, tvW, tvH);
+            const pixels = tvData.data;
+            
+            function randBool(){
+                if(Math.random() >= .5) return true;
+                return false;
+            }
+            
+            function drawStatic(){
+                for(let i = 0; i < pixels.length; i += 4){
+                    if(randBool()){
+                        pixels[i] = 0;
+                        pixels[i + 1] = 0;
+                        pixels[i + 2] = 0;
+                    } else {
+                        pixels[i] = 255;
+                        pixels[i + 1] = 255;
+                        pixels[i + 2] = 255;
+                    }
+                    
+                    pixels[i + 3] = 255;
+                }
+                
+                ctx.putImageData(tvData, 0, 0);
+            }
+            
+            setInterval(drawStatic, 50);
+        </script>
+    
+</body></html>
